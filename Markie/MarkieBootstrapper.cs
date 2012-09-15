@@ -24,7 +24,7 @@ namespace Markie
         {
             var formsAuthConfiguration = new FormsAuthenticationConfiguration()
                 {
-                    RedirectUrl = "~/login",
+                    RedirectUrl = "~/admin/login",
                     UserMapper = container.Resolve<IUserMapper>()
                 };
 
