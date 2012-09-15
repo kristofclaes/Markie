@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Nancy;
 using Nancy.Testing;
+using Nancy.Testing.Fakes;
 using Simple.Data;
 
 namespace Markie.Tests
@@ -15,8 +16,7 @@ namespace Markie.Tests
             var adapter = new InMemoryAdapter();
             Database.UseMockAdapter(adapter);
 
-            var bootstrapper = new ConfigurableBootstrapper(with => with.Module<LoginModule>());
-            var browser = new Browser(bootstrapper);
+            var browser = new Browser(BootstrapperFactory.Create());
 
             var response = browser.Get("/admin/login", with => with.HttpRequest());
 
@@ -32,12 +32,7 @@ namespace Markie.Tests
             var db = Database.Open();
             db.Users.Insert(Login: "me@example.com", HashedPassword: "hash", Salt: "salt", Guid: "5240cdc7-f32c-4d7f-9d27-f76a4a87d881");
 
-            var bootstrapper = new ConfigurableBootstrapper(with =>
-                {
-                    with.Module<LoginModule>();
-                    with.ViewEngine<Nancy.ViewEngines.Razor.RazorViewEngine>();
-                });
-            var browser = new Browser(bootstrapper);
+            var browser = new Browser(BootstrapperFactory.Create());
 
             var response = browser.Get("/admin/login", with => with.HttpRequest());
 
