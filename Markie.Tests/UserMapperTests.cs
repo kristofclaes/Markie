@@ -9,7 +9,7 @@ namespace Markie.Tests
     public class UserMapperTests
     {
         [Test]
-        public void returns_useridenty_when_guid_is_found()
+        public void Returns_useridenty_when_guid_is_found()
         {
             const string guid = "91e2403b-c568-4116-9c87-b6b71b6acbe4";
             const string userName = "user@example.com";
@@ -27,7 +27,7 @@ namespace Markie.Tests
         }
 
         [Test]
-        public void returns_null_when_guid_is_not_found()
+        public void Returns_null_when_guid_is_not_found()
         {
             var adapter = new InMemoryAdapter();
             Database.UseMockAdapter(adapter);
