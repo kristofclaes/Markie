@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{71C08F
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markie.Tests", "Markie.Tests\Markie.Tests.csproj", "{1CC8F83E-3C48-4B32-BB6D-6DE07174CE0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{6C2831D8-264B-43EC-96DE-3FC5E03AA686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C2831D8-264B-43EC-96DE-3FC5E03AA686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C2831D8-264B-43EC-96DE-3FC5E03AA686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC8F83E-3C48-4B32-BB6D-6DE07174CE0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC8F83E-3C48-4B32-BB6D-6DE07174CE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC8F83E-3C48-4B32-BB6D-6DE07174CE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC8F83E-3C48-4B32-BB6D-6DE07174CE0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
