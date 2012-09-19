@@ -1,8 +1,6 @@
-﻿using Markie.Modules;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Nancy;
 using Nancy.Testing;
-using Nancy.Testing.Fakes;
 using Simple.Data;
 
 namespace Markie.Tests

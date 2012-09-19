@@ -1,5 +1,4 @@
-﻿using Markie.Modules;
-using Nancy.Testing;
+﻿using Nancy.Testing;
 using Nancy.Testing.Fakes;
 
 namespace Markie.Tests
@@ -10,12 +9,7 @@ namespace Markie.Tests
         {
             FakeRootPathProvider.RootPath = "../../../Markie";
 
-            return new ConfigurableBootstrapper(with =>
-                {
-                    with.RootPathProvider(new FakeRootPathProvider());
-                    with.ViewEngine<Nancy.ViewEngines.Razor.RazorViewEngine>();
-                    with.Module<LoginModule>();
-                });
+            return new ConfigurableBootstrapper(with => with.RootPathProvider(new FakeRootPathProvider()));
         }
     }
 }
