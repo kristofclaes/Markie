@@ -73,6 +73,7 @@
     <Compile Include="BootstrapperFactory.cs" />
     <Compile Include="FakePasswordService.cs" />
     <Compile Include="LoginModuleTests.cs" />
+    <Compile Include="PasswordServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetupModuleTests.cs" />
     <Compile Include="UserMapperTests.cs" />
