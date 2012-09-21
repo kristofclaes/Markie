@@ -1,4 +1,6 @@
-﻿using Nancy.Testing;
+﻿using Markie.Authentication;
+using Nancy.Authentication.Forms;
+using Nancy.Testing;
 using Nancy.Testing.Fakes;
 
 namespace Markie.Tests
@@ -13,6 +15,16 @@ namespace Markie.Tests
                 {
                     with.RootPathProvider(new FakeRootPathProvider());
                     with.Dependency<FakePasswordService>();
+                    with.RequestStartup((container, pipelines, context) =>
+                        {
+                            var formsAuthConfiguration = new FormsAuthenticationConfiguration()
+                            {
+                                RedirectUrl = "~/admin/login",
+                                UserMapper = new UserMapper()
+                            };
+
+                            FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
+                        });
                 });
         }
     }
