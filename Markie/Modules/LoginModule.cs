@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Nancy;
-using Nancy.Responses;
+﻿using Nancy;
 using Simple.Data;
+using System.Dynamic;
 
 namespace Markie.Modules
 {
@@ -24,7 +20,13 @@ namespace Markie.Modules
                     return null;
                 };
 
-            Get["/admin/login"] = parameters => View["Index.cshtml"];
+            Get["/admin/login"] = parameters =>
+                {
+                    dynamic model = new ExpandoObject();
+                    model.HasError = this.Request.Query.error.HasValue;
+
+                    return View["Index.cshtml", model];
+                };
         }
     }
 }

@@ -4,4 +4,33 @@
     ViewBag.Title = "Login";
 }
 
-Olalalaaaaaaaa!
+<div class="row">
+    <div class="span4 offset4">
+        <form method="post">
+            <legend>Login</legend>
+            <div class="control-group">
+                <label class="control-label">Login</label>
+                <div class="controls">
+                    <input type="text" id="login" name="login" class="span4" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Password</label>
+                <div class="controls">
+                    <input type="text" id="password" name="password" class="span4" />
+                </div>
+            </div>
+            
+            @if (Model.HasError)
+            {
+                <div class="alert alert-error">
+                    Invalid combination of login and password.
+                </div>
+            }
+
+            <div class="form-actions">
+                <input type="submit" value="Login" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
