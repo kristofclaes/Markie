@@ -1,0 +1,36 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@{
+    Layout = "AdminLayout.cshtml";
+    ViewBag.Title = "Create a user";
+}
+
+<div class="row">
+    <div class="span4 offset4">
+        <form method="post">
+            <legend>Create a user</legend>
+            <div class="control-group">
+                <label class="control-label">Login</label>
+                <div class="controls">
+                    <input type="text" id="login" name="login" class="span4" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Password</label>
+                <div class="controls">
+                    <input type="text" id="password" name="password" class="span4" />
+                </div>
+            </div>
+            
+            @if (Model.HasError)
+            {
+                <div class="alert alert-error">
+                    Enter a login and a password. The login should be a valid email address.
+                </div>
+            }
+
+            <div class="form-actions">
+                <input type="submit" value="Create user" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -18,6 +18,7 @@ namespace Markie
             base.ConfigureRequestContainer(container, context);
 
             container.Register<IUserMapper, UserMapper>();
+            container.Register<IPasswordService, PasswordService>();
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)

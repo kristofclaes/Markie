@@ -1,0 +1,13 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@{
+    Layout = "AdminLayout.cshtml";
+    ViewBag.Title = "Setup is complete";
+}
+
+<div class="row">
+    <div class="span4 offset4">
+        <legend>Setup is complete</legend>
+        The user has been created. You can now proceed to the login page.
+        <p style="margin-top: 1em;"><a href="/admin/login" class="btn btn-primary btn-block btn-large">Proceed</a></p>
+    </div>
+</div>
