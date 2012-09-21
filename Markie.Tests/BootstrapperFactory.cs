@@ -9,7 +9,11 @@ namespace Markie.Tests
         {
             FakeRootPathProvider.RootPath = "../../../Markie";
 
-            return new ConfigurableBootstrapper(with => with.RootPathProvider(new FakeRootPathProvider()));
+            return new ConfigurableBootstrapper(with =>
+                {
+                    with.RootPathProvider(new FakeRootPathProvider());
+                    with.Dependency<FakePasswordService>();
+                });
         }
     }
 }
