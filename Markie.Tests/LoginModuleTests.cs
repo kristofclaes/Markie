@@ -59,7 +59,8 @@ namespace Markie.Tests
                     with.FormValue("Password", password);
                 });
 
-            response.ShouldHaveRedirectedTo("/admin/login?error=true&login=" + HttpUtility.UrlEncode(login));
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            response.Body["#login-error"].ShouldExistOnce().And.ShouldContain("Invalid combination of login and password.", StringComparison.OrdinalIgnoreCase);
         }
 
         [Test]

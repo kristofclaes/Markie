@@ -1,5 +1,6 @@
 ﻿using System;
 using Markie.Authentication;
+using Markie.ViewModels;
 using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Helpers;
@@ -26,11 +27,7 @@ namespace Markie.Modules
 
             Get["/admin/login"] = parameters =>
                 {
-                    dynamic model = new ExpandoObject();
-                    model.HasError = this.Request.Query.error.HasValue;
-                    model.Login = HttpUtility.UrlDecode(this.Request.Query.login ?? "");
-
-                    return View["Index.cshtml", model];
+                    return View["Index.cshtml", new LoginViewModel()];
                 };
 
             Post["/admin/login"] = parameters =>
@@ -43,7 +40,7 @@ namespace Markie.Modules
 
                     if (user == null)
                     {
-                        return Response.AsRedirect("~/admin/login?error=true&login=" + HttpUtility.UrlEncode(login));
+                        return View["Index.cshtml", new LoginViewModel { Login = login, HasError = true }];
                     }
 
                     string salt = user.Salt;
@@ -51,7 +48,7 @@ namespace Markie.Modules
 
                     if (!passwordService.VerifyHashedPassword(password, salt, correctPassword))
                     {
-                        return Response.AsRedirect("~/admin/login?error=true&login=" + HttpUtility.UrlEncode(login));
+                        return View["Index.cshtml", new LoginViewModel { Login = login, HasError = true }];
                     }
 
                     var guid = new Guid(user.Guid);

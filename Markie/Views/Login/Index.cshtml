@@ -1,4 +1,4 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Markie.ViewModels.LoginViewModel>
 @{
     Layout = "AdminLayout.cshtml";
     ViewBag.Title = "Login";
@@ -17,7 +17,7 @@
             <div class="control-group">
                 <label class="control-label">Password</label>
                 <div class="controls">
-                    <input type="text" id="password" name="password" class="span4" />
+                    <input type="password" id="password" name="password" class="span4" />
                 </div>
             </div>
             
