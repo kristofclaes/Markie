@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Nancy;
 using Nancy.Testing;
 using Simple.Data;
@@ -56,6 +57,7 @@ namespace Markie.Tests
         [TestCase("", "")]
         [TestCase("something", "")]
         [TestCase("", "something")]
+        [TestCase("invalidemail", "something")]
         public void Returns_view_with_errormessage_when_invalid_data_is_posted(string login, string password)
         {
             var adapter = new InMemoryAdapter();
@@ -70,7 +72,9 @@ namespace Markie.Tests
                     with.FormValue("Password", password);
                 });
 
-            response.ShouldHaveRedirectedTo("/admin/setup?error=true");
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            response.Body["#setup-error"].ShouldExistOnce().And.ShouldContain("Enter a login and a password. The login should be a valid email address.",
+                                                                              StringComparison.OrdinalIgnoreCase);
         }
 
         [Test]

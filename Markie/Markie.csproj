@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\PasswordService.cs" />
+    <Compile Include="ExtensionMethods\StringExtensionMethods.cs" />
     <Compile Include="MarkieBootstrapper.cs" />
     <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="Modules\SetupModule.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Authentication\UserIdentity.cs" />
     <Compile Include="Authentication\UserMapper.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\SetupViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

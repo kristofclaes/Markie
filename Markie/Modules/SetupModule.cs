@@ -1,5 +1,5 @@
-﻿using System.Dynamic;
-using Markie.Authentication;
+﻿using Markie.Authentication;
+using Markie.ViewModels;
 using Nancy;
 using Simple.Data;
 using System;
@@ -22,22 +22,16 @@ namespace Markie.Modules
                     return null;
                 };
 
-            Get["/admin/setup"] = parameters =>
-                {
-                    dynamic model = new ExpandoObject();
-                    model.HasError = this.Request.Query.error.HasValue;
-
-                    return View["Index.cshtml", model];
-                };
+            Get["/admin/setup"] = parameters => View["Index.cshtml", new SetupViewModel()];
 
             Post["/admin/setup"] = parameters =>
                 {
                     string login = Request.Form.Login;
                     string password = Request.Form.Password;
 
-                    if (String.IsNullOrWhiteSpace(login) || String.IsNullOrWhiteSpace(password))
+                    if (login.IsNullOrWhiteSpace() || password.IsNullOrWhiteSpace() || !login.IsValidEmailAddress())
                     {
-                        return Response.AsRedirect("~/admin/setup?error=true");
+                        return View["Index.cshtml", new SetupViewModel { Login = login, Password = password, HasError = true }];
                     }
 
                     string salt = passwordService.GenerateSalt();

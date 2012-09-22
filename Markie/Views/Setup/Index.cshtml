@@ -1,4 +1,4 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Markie.ViewModels.SetupViewModel>
 @{
     Layout = "AdminLayout.cshtml";
     ViewBag.Title = "Create a user";
@@ -11,19 +11,19 @@
             <div class="control-group">
                 <label class="control-label">Login</label>
                 <div class="controls">
-                    <input type="text" id="login" name="login" class="span4" />
+                    <input type="text" id="login" name="login" class="span4" value="@Model.Login" />
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">Password</label>
                 <div class="controls">
-                    <input type="text" id="password" name="password" class="span4" />
+                    <input type="text" id="password" name="password" class="span4" value="@Model.Password" />
                 </div>
             </div>
             
             @if (Model.HasError)
             {
-                <div class="alert alert-error">
+                <div id="setup-error" class="alert alert-error">
                     Enter a login and a password. The login should be a valid email address.
                 </div>
             }
