@@ -1,6 +1,7 @@
 ﻿using Markie.Authentication;
 using Markie.ViewModels;
 using Nancy;
+using Nancy.ModelBinding;
 using Simple.Data;
 using System;
 
@@ -26,20 +27,20 @@ namespace Markie.Modules
 
             Post["/admin/setup"] = parameters =>
                 {
-                    string login = Request.Form.Login;
-                    string password = Request.Form.Password;
+                    var model = this.Bind<SetupViewModel>();
+                    model.Validate();
 
-                    if (login.IsNullOrWhiteSpace() || password.IsNullOrWhiteSpace() || !login.IsValidEmailAddress())
+                    if (model.HasError)
                     {
-                        return View["Index.cshtml", new SetupViewModel { Login = login, Password = password, HasError = true }];
+                        return View["Index.cshtml", model];
                     }
 
                     string salt = passwordService.GenerateSalt();
-                    string hashedPassword = passwordService.HashPassword(password, salt);
+                    string hashedPassword = passwordService.HashPassword(model.Password, salt);
                     string guid = Guid.NewGuid().ToString();
 
                     var db = Database.Open();
-                    db.Users.Insert(Login: login, HashedPassword: hashedPassword, Salt: salt, Guid: guid);
+                    db.Users.Insert(Login: model.Login, HashedPassword: hashedPassword, Salt: salt, Guid: guid);
 
                     return View["Done.cshtml"];
                 };
