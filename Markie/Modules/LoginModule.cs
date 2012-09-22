@@ -1,11 +1,9 @@
-﻿using System;
-using Markie.Authentication;
+﻿using Markie.Authentication;
 using Markie.ViewModels;
 using Nancy;
 using Nancy.Authentication.Forms;
-using Nancy.Helpers;
 using Simple.Data;
-using System.Dynamic;
+using System;
 
 namespace Markie.Modules
 {
@@ -25,10 +23,7 @@ namespace Markie.Modules
                     return null;
                 };
 
-            Get["/admin/login"] = parameters =>
-                {
-                    return View["Index.cshtml", new LoginViewModel()];
-                };
+            Get["/admin/login"] = parameters => View["Index.cshtml", new LoginViewModel()];
 
             Post["/admin/login"] = parameters =>
                 {
