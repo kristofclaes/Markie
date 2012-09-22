@@ -81,7 +81,7 @@ namespace Markie.Tests
                     with.FormValue("Password", "password");
                 });
 
-            response.ShouldHaveRedirectedTo("/admin/drafts");
+            response.ShouldHaveRedirectedTo("/admin/posts");
         }
     }
 }

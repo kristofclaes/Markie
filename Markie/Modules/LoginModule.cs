@@ -48,7 +48,7 @@ namespace Markie.Modules
 
                     var guid = new Guid(user.Guid);
 
-                    return this.LoginAndRedirect(guid, DateTime.Now.AddDays(7), "~/admin/drafts");
+                    return this.LoginAndRedirect(guid, DateTime.Now.AddDays(7), "~/admin/posts");
                 };
         }
     }
