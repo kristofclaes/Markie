@@ -7,3 +7,22 @@ div.setup-form, div.login-form
 {
     margin-top: 20px;
 }
+
+table.post-summary th.post-date,
+table.post-summary td.post-date
+{
+    width: 100px;
+}
+
+table.post-summary th.post-actions,
+table.post-summary td.post-actions
+{
+    width: 50px;
+    text-align: right;
+}
+
+table.post-summary th.post-actions i,
+table.post-summary td.post-actions i
+{
+    margin-left: 6px;
+}

@@ -1,0 +1,56 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Markie.ViewModels.PostsIndexViewModel>
+@{
+    Layout = "AdminLayout.cshtml";
+    ViewBag.Title = "Recent drafts and posts";
+}
+
+<div class="page-header">
+    <h1>Recent drafts and posts</h1>
+</div>
+
+<div class="row">
+    <div class="span6">
+        <legend>Recent drafts</legend>
+        <table class="table table-striped table-hover post-summary">
+            <thead>
+                <tr>
+                    <th class="post-date">Last updated</th>
+                    <th class="post-title">Title</th>
+                    <th class="post-actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var post in Model.Drafts)
+                {
+                    <tr>
+                        <td class="post-date">@post.Date.ToString("ddd dd MMM yy")</td>
+                        <td class="post-title">@post.Title</td>
+                        <td class="post-actions"><i class="icon icon-pencil"></i> <i class="icon icon-thumbs-up"></i></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="span6">
+        <legend>Recent posts</legend>
+        <table class="table table-striped table-hover post-summary">
+            <thead>
+                <tr>
+                    <th class="post-date">Published</th>
+                    <th class="post-title">Title</th>
+                    <th class="post-actions"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var post in Model.Posts)
+                {
+                    <tr>
+                        <td class="post-date">@post.Date.ToString("ddd dd MMM yy")</td>
+                        <td class="post-title">@post.Title</td>
+                        <td class="post-actions"><i class="icon icon-pencil"></i> <i class="icon icon-thumbs-down"></i></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
