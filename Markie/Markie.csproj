@@ -118,6 +118,7 @@
     <Content Include="Views\Setup\Done.cshtml" />
     <Content Include="Views\AdminLayout.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\SetupLoginLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
