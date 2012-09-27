@@ -94,7 +94,9 @@
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\DraftSaver.js" />
     <Content Include="Content\js\jquery-1.8.1.min.js" />
+    <Content Include="Content\js\TinyPubSub.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

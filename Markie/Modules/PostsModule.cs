@@ -30,6 +30,19 @@ namespace Markie.Modules
 
                     return View["Index.cshtml", new PostsIndexViewModel { Drafts = drafts, Posts = posts }];
                 };
+
+            Post["/add"] = parameters =>
+                {
+                    return Response.AsJson<AddResult>(new AddResult { Id = 1, Success = true, Title = "The Title", Url = "/admin/login?ole=pole" });
+                };
         }
+    }
+
+    public class AddResult
+    {
+        public bool Success { get; set; }
+        public string Url { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
     }
 }
