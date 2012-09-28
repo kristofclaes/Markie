@@ -26,3 +26,8 @@ table.post-summary td.post-actions i
 {
     margin-left: 6px;
 }
+
+div.alert
+{
+    margin: 8px 0;
+}

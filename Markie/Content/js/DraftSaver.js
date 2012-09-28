@@ -15,28 +15,27 @@ Markie.draftSaver = (function ($) {
         publish = function (result) {
             $.publish(pubSubKey, [result.id, result.title, result.url]);
         },
-        addDraftSuccess = function (data) {
-            // TODO: Show message
+        addDraftSuccess = function (data, callback) {
+            Markie.alerter.addSuccess('The draft was successfully created...');
 
             textbox.val('');
             publish(data);
+
+            if (typeof callback === 'function') {
+                callback(data);
+            }
         },
         addDraftError = function () {
-            // TODO: Show message
+            Markie.alerter.addError('Something went wrong while creating the draft...');
         },
         addDraft = function (successCallback) {
             var newDraftTitle = textbox.val();
             $.post('/admin/posts/add', { title: newDraftTitle }, function (data) {
                 if (data.Success) {
-                    addDraftSuccess(data);
-
-                    if (typeof successCallback === 'function') {
-                        successCallback(data);
-                    }
+                    addDraftSuccess(data, successCallback);
                 } else {
                     addDraftError();
                 }
-                
             }).error(function () {
                 addDraftError();
             });
