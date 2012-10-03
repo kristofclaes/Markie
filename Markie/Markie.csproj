@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="Authentication\PasswordService.cs" />
     <Compile Include="ExtensionMethods\StringExtensionMethods.cs" />
+    <Compile Include="Infrastructure\Slugifier.cs" />
     <Compile Include="MarkieBootstrapper.cs" />
     <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="Modules\PostsModule.cs" />
