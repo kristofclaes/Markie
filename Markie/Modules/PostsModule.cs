@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Markie.Infrastructure;
 using Markie.ViewModels;
 using Nancy;
 
@@ -8,7 +8,7 @@ namespace Markie.Modules
 {
     public class PostsModule : NancyModule
     {
-        public PostsModule() : base("/admin/posts")
+        public PostsModule(IPostStore postStore) : base("/admin/posts")
         {
             // Returns 10 most recent drafts and 10 most recent posts
             Get["/"] = parameters =>
@@ -33,16 +33,10 @@ namespace Markie.Modules
 
             Post["/add"] = parameters =>
                 {
-                    return Response.AsJson<AddResult>(new AddResult { Id = 1, Success = true, Title = "The Title", Url = "/admin/login?ole=pole" });
+                    string title = Request.Form.title;
+                    var addResult = postStore.AddDraft(title);
+                    return Response.AsJson(addResult);
                 };
         }
-    }
-
-    public class AddResult
-    {
-        public bool Success { get; set; }
-        public string Url { get; set; }
-        public int Id { get; set; }
-        public string Title { get; set; }
     }
 }

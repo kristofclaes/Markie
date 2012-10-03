@@ -106,8 +106,10 @@
     <Compile Include="Infrastructure\Slugifier.cs" />
     <Compile Include="Infrastructure\SlugManager.cs" />
     <Compile Include="MarkieBootstrapper.cs" />
+    <Compile Include="Infrastructure\AddDraftResult.cs" />
     <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="Modules\PostsModule.cs" />
+    <Compile Include="Infrastructure\PostStore.cs" />
     <Compile Include="Modules\SetupModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Authentication\UserIdentity.cs" />

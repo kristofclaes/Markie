@@ -1,4 +1,5 @@
 ﻿using Markie.Authentication;
+using Markie.Tests.Fakes;
 using Nancy.Authentication.Forms;
 using Nancy.Testing;
 using Nancy.Testing.Fakes;
@@ -15,6 +16,7 @@ namespace Markie.Tests
                 {
                     with.RootPathProvider(new FakeRootPathProvider());
                     with.Dependency<FakePasswordService>();
+                    with.Dependency<FakePostStore>();
                     with.RequestStartup((container, pipelines, context) =>
                         {
                             var formsAuthConfiguration = new FormsAuthenticationConfiguration()

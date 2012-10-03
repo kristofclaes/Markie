@@ -1,6 +1,6 @@
 using Markie.Authentication;
 
-namespace Markie.Tests
+namespace Markie.Tests.Fakes
 {
     public class FakePasswordService : IPasswordService
     {

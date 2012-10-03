@@ -71,7 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BootstrapperFactory.cs" />
-    <Compile Include="FakePasswordService.cs" />
+    <Compile Include="Fakes\FakePasswordService.cs" />
+    <Compile Include="Fakes\FakePostStore.cs" />
     <Compile Include="LoginModuleTests.cs" />
     <Compile Include="PasswordServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
