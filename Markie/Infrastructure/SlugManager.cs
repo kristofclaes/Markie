@@ -22,7 +22,7 @@ namespace Markie.Infrastructure
                 return postSlug;
             }
 
-            List<string> slugs = GetUrlSlugStartingWith(db, postSlug);
+            List<string> slugs = db.Posts.FindAll(db.Posts.UrlSlug.Like(postSlug + "%")).Select(db.Posts.UrlSlug).ToScalarList<string>();
 
             int counter = 2;
             string slugCandidate = String.Format("{0}-{1}", postSlug, counter);
@@ -34,19 +34,6 @@ namespace Markie.Infrastructure
             }
 
             return String.Format("{0}-{1}", postSlug, counter);
-        }
-
-        private List<string> GetUrlSlugStartingWith(dynamic db, string slug)
-        {
-            var postsStartingWithSlug = db.Posts.FindAll(db.Posts.UrlSlug.Like(slug + "%")).Select(db.Posts.UrlSlug).ToList();
-
-            var slugs = new List<string>();
-            foreach (var slugObject in postsStartingWithSlug)
-            {
-                slugs.Add(slugObject.UrlSlug);
-            }
-
-            return slugs;
         }
     }
 }
