@@ -35,13 +35,13 @@ namespace Markie.Infrastructure
                 DateTime currentTime = DateTime.UtcNow;
 
                 var db = Database.Open();
-                var post = db.Posts.Insert(Title: postTitle, UrlSlug: uniqueSlug, IsPublised: false, CreatedOn: currentTime, LastUpdatedOn: currentTime);
+                var post = db.Posts.Insert(Title: postTitle, UrlSlug: uniqueSlug, IsPublished: false, CreatedOn: currentTime, LastUpdatedOn: currentTime);
 
-                var addResult = new AddDraftResult { Success = true, Id = post.Id, Title = post, Url = "/admin/posts/edit/" + post.Id };
+                var addResult = new AddDraftResult { Success = true, Id = post.PostId, Title = post.Title, Url = "/admin/posts/edit/" + post.PostId };
 
                 return addResult;
             }
-            catch
+            catch (Exception error)
             {
                 return new AddDraftResult { Success = false };
             }
