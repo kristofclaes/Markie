@@ -31,7 +31,7 @@ namespace Markie.Modules
                     string password = Request.Form.Password;
 
                     var db = Database.Open();
-                    var user = db.Users.FindByLogin(login);
+                    var user = db.Users.FindAllByLogin(login).FirstOrDefault();
 
                     if (user == null)
                     {

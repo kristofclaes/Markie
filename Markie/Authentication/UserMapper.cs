@@ -11,7 +11,7 @@ namespace Markie.Authentication
         public IUserIdentity GetUserFromIdentifier(Guid identifier, NancyContext context)
         {
             var db = Database.Open();
-            var user = db.Users.FindByGuid(identifier.ToString());
+            var user = db.Users.FindAllByGuid(identifier.ToString()).FirstOrDefault();
 
             return user == null ? null : new UserIdentity { UserName = user.Login };
         }
