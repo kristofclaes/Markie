@@ -15,7 +15,7 @@ namespace Markie.Infrastructure
         public string GetUniqueSlug(string postSlug)
         {
             var db = Database.Open();
-            var numberOfPostsWithSlug = db.Posts.FindAllByUrlSlug(postSlug).Count();
+            var numberOfPostsWithSlug = db.Posts.GetCount(db.Posts.UrlSlug == postSlug);
 
             if (numberOfPostsWithSlug == 0)
             {

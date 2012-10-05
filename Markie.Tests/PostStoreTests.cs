@@ -93,7 +93,7 @@ namespace Markie.Tests
             postStore.AddDraft(title);
 
             var db = Database.Open();
-            var postCount = db.Posts.All().Count();
+            var postCount = db.Posts.GetCount();
 
             Assert.AreEqual(0, postCount);
         }

@@ -15,7 +15,7 @@ namespace Markie.Modules
                 {
                     var db = Database.Open();
 
-                    if (db.Users.All().Count() > 0)
+                    if (db.Users.GetCount() > 0)
                     {
                         return Response.AsRedirect("~/admin/login");
                     }
