@@ -1,4 +1,5 @@
 ﻿using Markie.Authentication;
+using Markie.Infrastructure;
 using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
@@ -19,6 +20,9 @@ namespace Markie
 
             container.Register<IUserMapper, UserMapper>();
             container.Register<IPasswordService, PasswordService>();
+            container.Register<IPostStore, PostStore>();
+            container.Register<ISlugifier, Slugifier>();
+            container.Register<ISlugManager, SlugManager>();
         }
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
