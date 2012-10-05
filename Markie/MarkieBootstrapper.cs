@@ -1,6 +1,4 @@
-﻿using Markie.Authentication;
-using Markie.Infrastructure;
-using Nancy;
+﻿using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
 using TinyIoC;
@@ -9,22 +7,6 @@ namespace Markie
 {
     public class MarkieBootstrapper : DefaultNancyBootstrapper
     {
-        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
-        {
-            
-        }
-
-        protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
-        {
-            base.ConfigureRequestContainer(container, context);
-
-            container.Register<IUserMapper, UserMapper>();
-            container.Register<IPasswordService, PasswordService>();
-            container.Register<IPostStore, PostStore>();
-            container.Register<ISlugifier, Slugifier>();
-            container.Register<ISlugManager, SlugManager>();
-        }
-
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
         {
             var formsAuthConfiguration = new FormsAuthenticationConfiguration()
